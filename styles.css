@@ -1,0 +1,555 @@
+/* ЭТОТ КОД ДЛЯ BODY НЕ ИСПОЛЬЗОВАТЬ! ДЕМО*/
+body {
+    margin: 0;
+    padding: 0;
+    /* background-color: bisque; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+/* КОНЕЦ! ЭТОТ КОД ДЛЯ BODY НЕ ИСПОЛЬЗОВАТЬ! ДЕМО*/
+
+*,
+*::after,
+*::before {
+    box-sizing: border-box;
+}
+
+:root {
+    --grey300: #504d4d;
+    --white: #fff;
+    --black: #000;
+    --modal-cover: rgba(0, 0, 0, 0.2);
+    --modal-text: #263238;
+    --text-lite: #D4D6DC;
+    --text: #263238;
+    --accent: #FF5722;
+    --grey-2: #BFBFBF;
+    --wiget-border: rgba(0, 0, 0, 0.3);
+}
+
+button,
+a {
+    padding: 0;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+/* PODELI STYLE */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
+
+.wiget-block-wrapper {
+    display: grid;
+    row-gap: 20px;
+    background-color: firebrick;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.wiget-block-wrapper * {
+    font-family: Inter, sans-serif;
+}
+
+.wiget-block-v1 {
+    padding: 10px;
+    background-color: var(--white);
+}
+
+.wiget-block {
+    min-width: 480px;
+    width: max-content;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 22px 16px;
+    border-bottom: 1px solid var(--wiget-border);
+}
+
+.wiget-block:first-child {
+    border-top: 1px solid var(--wiget-border);
+}
+
+.wiget-block__content {
+    display: flex;
+    align-items: center;
+}
+
+.wiget-block__logotypes {
+    display: flex;
+}
+
+.wiget-block__logotype {
+    border-radius: 50%;
+}
+
+.wiget-block__logotype:nth-child(2) {
+    transform: translateX(-5px);
+    position: relative;
+    z-index: 2;
+}
+
+.wiget-block__title-subtitle {
+    margin-left: 16px;
+}
+
+.wiget-block__logotype {
+    width: 24px;
+    height: 24px;
+}
+
+.wiget-block__prompt-close {
+    width: 32px;
+    height: 32px;
+}
+
+.wiget-block__info {
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+}
+
+.wiget-block__info svg,
+.wiget-block__logotype svg,
+.wiget-block__prompt-close svg {
+    width: 100%;
+    height: 100%;
+}
+
+.wiget-block__title {
+    margin: 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: -0.1px;
+    color: #1D2939;
+}
+
+.wiget-block__subtitle {
+    font-size: 11px;
+    line-height: 14px;
+    color: #263238;
+}
+
+.wiget-block-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 12px;
+}
+
+.wiget-block-split__item {
+    position: relative;
+    padding-top: 12px;
+    font-weight: 500;
+    color: #263238;
+}
+
+.wiget-block-split__item::before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: #F7592F;
+}
+
+.wiget-block-split__item_disable {
+    color: rgba(16, 24, 40, 30%);
+}
+
+.wiget-block-split__item_disable::before {
+    background-color: rgba(16, 24, 40, 10%);
+}
+
+/* END PODELI STYLE */
+
+/* PODELI STYLE v.2 */
+
+.wiget-block-v2 {
+    min-width: 360px;
+    width: max-content;
+    padding: 12px 16px;
+    border-radius: 14px;
+    display: grid;
+    row-gap: 16px;
+    background-color: var(--white);
+}
+
+.wiget-head-v2 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.wiget-head-v2__text {
+    display: flex;
+    align-items: center;
+    color: var(--black);
+}
+
+.wiget-head-v2__button {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--black);
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.2;
+    color: var(--white);
+    border-radius: 20px;
+    max-width: 132px;
+    width: max-content;
+    padding: 5px 10px;
+    border: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.wiget-head-v2__button:focus {
+    box-shadow: 0 0 0 1px var(--accent) inset;
+    outline: none;
+}
+
+.wiget-head-v2__button:hover,
+.wiget-head-v2__button:active {
+    box-shadow: 0 0 0 1px var(--black) inset;
+    background-color: var(--white);
+    color: var(--text);
+}
+
+.wiget-head-v2__button:disabled {
+    box-shadow: 0 0 0 1px var(--grey-2) inset;
+    background-color: var(--white);
+    color: var(--text);
+    opacity: 0.3;
+}
+
+.text__payment {
+    padding: 0 9px;
+    margin-right: 8px;
+    border-radius: 12px;
+    border: 1px solid var(--black);
+}
+
+/* END PODELI STYLE v.2 */
+
+/* VIGET STYLE v.3 */
+
+.wiget-block-v3 {
+    display: grid;
+    row-gap: 16px;
+}
+
+.wiget-action-button {
+    width: max-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 26px;
+    padding: 6px 18px 6px 8px;
+    background-color: var(--black);
+    color: var(--text-lite);
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+}
+
+.wiget-action-button:focus {
+    box-shadow: 0 0 0 1px var(--accent) inset;
+    outline: none;
+}
+
+.wiget-action-button:hover,
+.wiget-action-button:active {
+    box-shadow: 0 0 0 1px var(--black) inset;
+    background-color: var(--white);
+    color: var(--text);
+}
+
+.wiget-action-button:disabled {
+    box-shadow: 0 0 0 1px var(--grey-2) inset;
+    background-color: var(--white);
+    color: var(--text);
+    opacity: 0.3;
+}
+
+.wiget-action-button__icons {
+    display: flex;
+}
+
+.wiget-action-button__icons svg {
+    width: 24px;
+    height: 24px;
+}
+
+.wiget-action-button__icons_v2 {
+    margin-right: -5px;
+}
+
+.wiget-action-button__icons svg:nth-child(2) {
+    transform: translateX(-5px);
+}
+
+.wiget-action-button__text {
+    margin-left: 16px;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+/* END VIGET STYLE v.3 */
+
+/* POP-UP style */
+
+.modal-wrapper {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    background-color: var(--modal-cover);
+    backdrop-filter: blur(5px);
+}
+
+.show-modal {
+    display: flex;
+}
+
+.modal {
+    position: relative;
+    display: grid;
+    row-gap: 20px;
+    max-width: 520px;
+    width: 100%;
+    background-color: var(--white);
+    border-radius: 16px;
+    padding: 34px 24px 28px 24px;
+}
+
+.modal__close {
+    position: absolute;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    top: 24px;
+    right: 24px;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.modal-logotypes {
+    display: flex;
+    align-items: center;
+}
+
+.robokassa-logo {
+    max-width: 128px;
+    width: 100%;
+    max-height: 20px;
+    height: 100%;
+}
+
+.robokassa-logo svg,
+.podeli-logo svg {
+    width: 100%;
+    height: 100%;
+}
+
+.podeli-logo {
+    line-height: 0;
+    max-width: 72px;
+    width: 100%;
+    max-height: 12px;
+    height: 100%;
+}
+
+.separate-logo {
+    --grey300new: #DBE5F0;
+    margin: 0 16px;
+    width: 1px;
+    height: 40px;
+    background-color: var(--grey300new);
+}
+
+.modal-content {
+    display: grid;
+    row-gap: 12px;
+}
+
+.modal-content__title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 24px;
+    color: var(--black);
+}
+
+.modal-content__text {
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--modal-text);
+}
+
+.modal-content__info {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 11px 9px;
+}
+
+.modal-content__info-item {
+    max-width: 225px;
+    display: flex;
+    align-items: center;
+}
+
+.info-item-icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    margin-right: 12px;
+}
+
+.info-item-text {
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 18px;
+    color: var(--modal-text);
+}
+
+.modal-link {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 40px;
+    border-radius: 22px;
+    text-transform: uppercase;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 18px;
+    background-color: var(--black);
+    color: var(--white);
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.modal-link:hover {
+    background-color: #222d41;
+}
+
+.modal-link:focus {
+    outline: none;
+    background-color: #222d41;
+}
+
+.modal-payments {
+
+}
+
+.modal-payments__title {
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #101828;
+    margin-bottom: 12px;
+}
+
+.modal-payments__list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.payments-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    padding: 6px 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #35647E;
+    border-radius: 20px;
+    background-color: rgba(86, 86, 86, 0.06);
+    transition: all 0.2 ease-in-out;
+    cursor: pointer;
+}
+
+.payments-item:last-child {
+    margin-left: 12px;
+}
+
+.payments-item.active,
+.payments-item:hover {
+    color: var(--white);
+    background-color: #101828;
+}
+
+.change-credit {
+
+}
+
+.change-credit__list {
+    display: flex;
+    align-items: center;
+}
+
+.change-credit__button {
+    min-width: 120px;
+    width: max-content;
+    padding: 6px 0;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 20px;
+    color: #35647E;
+    border-radius: 20px;
+    background-color: rgba(86, 86, 86, 0.06);
+    transition: all 0.2 ease-in-out;
+    border: none;
+    cursor: pointer;
+}
+
+.change-credit__button.active,
+.change-credit__button:hover {
+    color: var(--white);
+    background-color: #101828;
+}
+
+/* END POP-UP style */
+
+/* MOBILE STYLE */
+
+@media screen and (max-width: 560px) {
+
+body {
+    max-width: unset;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+}
+
+/* END MOBILE STYLE */
